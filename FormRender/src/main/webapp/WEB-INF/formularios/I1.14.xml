@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Formulario I1.14 - Inversiones</h:title>
+    <model>
+      <submission action="/api/deposition" method="form-data-post"/>
+      <instance>
+        <I1.14 id="I1.14">
+          <titulo/>
+          <inversiones>
+            <anio/>
+            <total/>
+          </inversiones>
+          <meta>
+            <instanceID/>
+          </meta>
+        </I1.14>
+      </instance>
+      <bind nodeset="/I1.14/titulo" readonly="true()" type="string"/>
+      <bind constraint="url=/servicios/rest/listas/anio" nodeset="/I1.14/inversiones/anio" required="true()" type="select1"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/I1.14/inversiones/total" required="true()" type="int"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/I1.14/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input appearance="tooltip" ref="/I1.14/titulo">
+      <hint>Completar en base a los mismos criterios utilizados en los EECC.</hint>
+    </input>
+    <group appearance="col3 well-white" ref="/I1.14/inversiones">
+      <label>Inversiones</label>
+      <select1 appearance="minimal" ref="/I1.14/inversiones/anio">
+        <label>Año</label>
+        <hint>Año</hint>
+        <item>
+          <label>Seleccione una opción</label>
+          <value>-1</value>
+        </item>
+        
+      </select1>
+      <input ref="/I1.14/inversiones/total">
+        <label>Total</label>
+        <hint>Total [en miles de pesos]</hint>
+      </input>
+    </group>
+  </h:body>
+</h:html>

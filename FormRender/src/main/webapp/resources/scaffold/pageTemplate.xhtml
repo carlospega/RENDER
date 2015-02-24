@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<h:head>	
+	<title>#{empty pageTitle ? '{#pageTitle}' : pageTitle}</title>
+	<link rel="icon" href="#{resources['favicon.ico']}" />
+	<h:outputStylesheet name="formrender.css"/> 	
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />
+	<ui:insert name="scripts"/>
+</h:head>
+
+<h:body>
+<div id="container">
+	<div id="header">
+			<h:form>
+				<h:graphicImage value="/resources/images/logo.png"/>				 
+			</h:form>
+		</div>
+		<div id="navigation">			
+			<ul>
+				<li>
+					<h:link outcome="/formulario/search" value="Formularios"/>
+				</li>				 
+				<li>
+					<h:link outcome="/xsl/search" value="Xsl"/>
+				</li>
+				
+				<li>
+					<h:link outcome="/cargaMasiva/search" value="Carga Masiva"/>
+				</li>				
+			</ul>
+		</div>
+
+		
+	
+	<div id="wrapper">
+	
+			
+		
+			<div id="content">
+				<h1><ui:insert name="header"/></h1>		
+				<h2><ui:insert name="subheader"/></h2>
+		
+				<ui:insert name="main"/>
+				<br/>
+
+							</div>	
+							
+								
+		</div>
+
+	<div id="footer">
+					CUYUM - 2013
+	</div>		
+</div>
+</h:body>
+
+</html>

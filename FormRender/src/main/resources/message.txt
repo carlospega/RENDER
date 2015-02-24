@@ -1,0 +1,5 @@
+1=El objeto tiene propiedades no permitidas por el schema:
+2=El objeto requiere la propiedad:
+3=El formulario no puede tener registros duplicados
+4=Error de tipo de dato - Tipo no permitido:
+5=Debe tener al menos 1 elemento en el arreglo

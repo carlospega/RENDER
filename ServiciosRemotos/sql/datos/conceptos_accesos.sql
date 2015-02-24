@@ -1,0 +1,12 @@
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (201,'DIAL_UP', 'DIAL UP', '610','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (202,'DIAL_UP', 'DIAL UP', '612','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (203,'DIAL_UP', 'DIAL UP', '611','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (204,'DIAL_UP', 'DIAL UP', 'NRO_GEOGRAFICO','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (205,'ADSL', 'ADSL', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (207,'CABLEMODEN', 'CABLEMODEN','BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (208,'WIRELESS', 'WIRELESS', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (209,'CELULAR', 'CELULAR', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (210,'SATELITAL', 'SATELITAL', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (211,'BPL', 'BPL', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (212,'WIMAX', 'WIMAX', 'BANDA_ANCHA','accesos');
+insert into conceptos (id, nombre, valor,idPadre, tipo) values (213,'FIBRA_OPTICA', 'FIBRA OPTICA', 'BANDA_ANCHA','accesos');
