@@ -70,7 +70,7 @@
           </input>
           <input ref="/D1.16/areasprest/areas/datos">
             <label>Datos</label>
-            <hint>MB (megabyte)</hint>
+            <hint>MB (megabytes)</hint>
           </input>
         </group>
       </repeat>

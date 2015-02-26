@@ -17,8 +17,8 @@
           </meta>
         </F1.9>
       </instance>
-      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/F1.9/meses/mes/entrante" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/F1.9/meses/mes/saliente" required="true()" type="int"/>
+      <bind nodeset="/F1.9/meses/mes/entrante" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
+      <bind nodeset="/F1.9/meses/mes/saliente" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
       <bind calculate="concat('uuid:', uuid())" nodeset="/F1.9/meta/instanceID" readonly="true()" type="string"/>
     </model>
   </h:head>
@@ -30,11 +30,11 @@
           <label>{title}</label>
           <input ref="/F1.9/meses/mes/entrante">
             <label>Entrante</label>
-            <hint>Entrante [Mbps]</hint>
+            <hint>Tráfico entrante en MB (megabytes)</hint>
           </input>
           <input ref="/F1.9/meses/mes/saliente">
             <label>Saliente</label>
-            <hint>Saliente [Mbps]</hint>
+            <hint>Tráfico saliente en MB (megabytes)</hint>
           </input>
         </group>
       </repeat>
