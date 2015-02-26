@@ -50,13 +50,13 @@
       <bind nodeset="/F1.8/meses/mes/trafico1/entrante1" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
       <bind nodeset="/F1.8/meses/mes/trafico1/saliente1" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
       <bind constraint="url=/servicios/rest/prestadores and cuit" jr:constraintMsg="CUIT no válido" nodeset="/F1.8/meses/mes/trafico2/prestador2" type="select1"/>
-      <bind nodeset="/F1.8/meses/mes/trafico2/entrante2" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
-      <bind nodeset="/F1.8/meses/mes/trafico2/saliente2" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
+      <bind nodeset="/F1.8/meses/mes/trafico2/entrante2" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>
+      <bind nodeset="/F1.8/meses/mes/trafico2/saliente2" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>
       <bind constraint="url=/servicios/rest/prestadores and cuit" jr:constraintMsg="CUIT no válido" nodeset="/F1.8/meses/mes/trafico3/prestador3" type="select1"/> 	  
-      <bind nodeset="/F1.8/meses/mes/trafico3/entrante3" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
-      <bind nodeset="/F1.8/meses/mes/trafico3/saliente3" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>	  
-      <bind nodeset="/F1.8/meses/mes/traficoOtros/entranteOtros" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>
-      <bind nodeset="/F1.8/meses/mes/traficoOtros/salienteOtros" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" required="true()" type="int"/>	  
+      <bind nodeset="/F1.8/meses/mes/trafico3/entrante3" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>
+      <bind nodeset="/F1.8/meses/mes/trafico3/saliente3" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>	  
+      <bind nodeset="/F1.8/meses/mes/traficoOtros/entranteOtros" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>
+      <bind nodeset="/F1.8/meses/mes/traficoOtros/salienteOtros" constraint=".&gt;=0 and .&lt;=999999999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999999999" type="int"/>	  
       <bind calculate="concat('uuid:', uuid())" nodeset="/F1.8/meta/instanceID" readonly="true()" type="string"/>
     </model>
   </h:head>
