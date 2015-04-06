@@ -1,0 +1,307 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema",
+   "type":"object",
+   "action":"/api/deposition",
+   "method":"form-data-post",
+   "required":[
+      "formulario"
+   ],
+   "properties":{
+      "formulario":{
+         "type":"object",
+         "required":[
+            "id",
+            "formularios"
+         ],
+         "properties":{
+            "id":{
+               "enum":[
+                  "PRUEBA_4G"
+               ]
+            },
+            "formularios":{
+               "type":"array",
+               "minItems":1,
+               "items":{
+                  "type":"object",
+                  "required":[
+                     "data"
+                  ],
+                  "properties":{
+                     "data":{
+                        "type":"array",
+                        "minItems":1,
+                        "items":{
+                           "type":"object",
+                           "required":[
+                              "etapa",
+                              "planificado",
+                              "estado",
+                              "codigo_nodo",
+                              "id_celda",
+                              "anfitrion_sitio",
+                              "colocalizacion",
+                              "sitio_tipo",
+                              "sitio_critico",
+                              "provincia",
+                              "partido",
+                              "localidad",
+                              "latitud",
+                              "longitud",
+                              "altura",
+                              "tecnologia",
+                              "banda",
+                              "tipo_acceso",
+                              "cap_trafico"
+                           ],
+                           "claves_primarias":[
+                           ],						   
+                           "grid":{
+                              "sumarizada":false,
+                              "calculados":false,
+                              "ingresados":false
+                           },
+                           "properties":{
+                              "instance":{
+                                 "$ref":"formulario.json#/definitions/integer"
+                              },
+                              "etapa":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/etapa",
+                                 "title":"Etapa",
+                                 "hint":"Etapa de despliegue",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "planificado":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/estado_planif",
+                                 "title":"Planificado",
+                                 "hint":"Identifica si el sitio fue presentado en la oferta de licitación",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "estado":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/estado",
+                                 "title":"Estado",
+                                 "hint":"Estado en que se encuentra el sitio",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "codigo_nodo":{
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "title":"Código nodo",
+                                 "hint":"Código identificatorio del nodo"
+                              },
+                              "id_celda":{
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "title":"ID celda",
+                                 "hint":"ID Celda (CGI-eNBId)"
+                              },
+                              "anfitrion_sitio":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/booleano",
+                                 "title":"Anfitrión",
+                                 "hint":"Anfitrión del sitio",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "colocalizacion":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/booleano",
+                                 "title":"Colocalización",
+                                 "hint":"Colocalización (sitio compartido con otro operador)",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "sitio_tipo":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/4G_TIPO_SITIO",
+                                 "title":"Tipo de sitio",
+                                 "hint":"Tipo de sitio",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "sitio_critico":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/booleano",
+                                 "title":"Sitio crítico",
+                                 "hint":"Sitio crítico",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "provincia":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/provincias",
+                                 "title":"Provincia",
+                                 "hint":"Provincia",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "partido":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/partidos",
+                                 "depends":"provincia",
+                                 "title":"Partido / Departamento",
+                                 "hint":"Partido/Departamento",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "partido_otro":{
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "relevant":[
+                                    "partido =9999"
+                                 ],
+                                 "title":"Partido Otros",
+                                 "hint":"Partido Otros"
+                              },
+                              "localidad":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/localidades",
+                                 "depends":"partido",
+                                 "title":"Localidad",
+                                 "hint":"Localidad",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "localidad_otro":{
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "relevant":[
+                                    "localidad =9999"
+                                 ],
+                                 "title":"Localidad Otros",
+                                 "hint":"Localidad Otros"
+                              },
+                              "latitud":{
+                                 "$ref":"formulario.json#/definitions/decimal",
+                                 "minimum":-99.999999,
+                                 "maximum":99.999999,
+                                 "title":"Latitud",
+                                 "hint":"Latitud"
+                              },
+                              "longitud":{
+                                 "$ref":"formulario.json#/definitions/decimal",
+                                 "minimum":-99.999999,
+                                 "maximum":99.999999,
+                                 "title":"Longitud",
+                                 "hint":"Longitud"
+                              },
+                              "altura":{
+                                 "$ref":"formulario.json#/definitions/decimal",
+                                 "minimum":0,
+                                 "maximum":999999.99,
+                                 "title":"Altura",
+                                 "hint":"Altura (en metros)"
+                              },
+                              "tecnologia":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/tecnologias_4g",
+                                 "title":"Tecnología",
+                                 "hint":"Tecnología",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "banda":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/4G_BANDAS",
+                                 "title":"Banda",
+                                 "hint":"Banda",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "tipo_acceso":{
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/listas/tipo_acc_4g",
+                                 "title":"Tipo de acceso",
+                                 "hint":"Tipo de acceso",
+                                 "values":[
+                                    {
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "frecuencia":{
+                                 "$ref":"formulario.json#/definitions/decimal",
+                                 "minimum":0,
+                                 "maximum":99999.9999,
+                                 "title":"Frecuencia",
+                                 "hint":"Frecuencia (MHz)"
+                              },
+                              "cap_trafico":{
+                                 "$ref":"formulario.json#/definitions/decimal",
+                                 "minimum":0,
+                                 "maximum":999999999999999.99,
+                                 "title":"Capacidad de tráfico",
+                                 "hint":"Capacidad de tráfico configurada, en MB (megabytes)"
+                              },
+                              "firma_digital":{
+                                 "$ref":"formulario.json#/definitions/string"
+                              }
+                           },
+                           "otherFields":{
+                              "titulo":{
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "hint":"Datos de despliegue"
+                              }
+                           },
+                           "additionalProperties":false
+                        },
+                        "uniqueItems":true
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

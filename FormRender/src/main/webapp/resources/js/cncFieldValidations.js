@@ -1438,7 +1438,7 @@ var setupValidationDefaults = function() {
 	$.validator.addMethod("decimal", function(value, element) {
 		// var matchse
 		// =/^-?(?:\d+\,\d{1,3}|\d{1,3}(?:\.\d{3})+\,\d{1,3})$/.test(value);
-		var match = /^\s*-?(\d+(\.\d{1,3})?|\.\d{1,3})\s*$/.test(value);
+		var match = /^\s*-?(\d+(\.\d{1,6})?|\.\d{1,6})\s*$/.test(value);
 		return this.optional(element) || match;
 	}, "N&uacute;mero no v&aacute;lido");
 	// "Debe especificar un n&uacute;mero decimal con dos cifras luego del

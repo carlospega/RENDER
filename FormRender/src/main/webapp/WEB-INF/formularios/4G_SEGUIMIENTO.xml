@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Despliegue de infraestructura 4G</h:title>
+    <model>
+      <submission action="/api/deposition" method="form-data-post"/>
+      <instance>
+        <FDI_4G id="FDI_4G">
+          <titulo/>
+		  <despliegue jr:template="">
+			  <g1 jr:template="">
+				<etapa/>
+				<planificado/>
+				<estado/>
+			  </g1>
+			  <g2 jr:template="">
+				<codigo_nodo/>
+				<id_celda/>
+				<anfitrion_sitio/>
+				<colocalizacion/>
+				<sitio_tipo/>
+				<sitio_critico/>
+			  </g2>
+			  <g3 jr:template="">	
+				<provincia/>
+				<partido/>
+				<partido_otro/>
+				<localidad/>
+				<localidad_otro/>
+				<latitud/>
+				<longitud/>
+				<altura/>
+			  </g3>
+			  <g4 jr:template="">
+				<tecnologia/>
+				<banda/>
+				<tipo_acceso/>				
+				<frecuencia/>
+				<cap_trafico/>
+			  </g4>
+		  </despliegue>
+          <meta>
+            <instanceID/>
+          </meta>
+        </FDI_4G>
+      </instance>
+      <bind nodeset="/FDI_4G/titulo" readonly="true()" type="string"/>
+	  <bind nodeset="/FDI_4G/despliegue/g1/etapa" constraint="url=/servicios/rest/listas/etapa" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g1/planificado" constraint="url=/servicios/rest/listas/estado_planif" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g1/estado" constraint="url=/servicios/rest/listas/estado" required="true()" type="select1"/>
+	  
+	  <bind nodeset="/FDI_4G/despliegue/g2/codigo_nodo" required="true()" type="string"/>
+	  <bind nodeset="/FDI_4G/despliegue/g2/id_celda" required="true()" type="string"/>
+	  <bind nodeset="/FDI_4G/despliegue/g2/anfitrion_sitio" constraint="url=/servicios/rest/listas/booleano" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g2/colocalizacion" constraint="url=/servicios/rest/listas/booleano" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g2/sitio_tipo" constraint="url=/servicios/rest/listas/4G_TIPO_SITIO" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g2/sitio_critico" constraint="url=/servicios/rest/listas/booleano" required="true()" type="select1"/>
+	  
+      <bind nodeset="/FDI_4G/despliegue/g3/provincia" constraint="url=/servicios/rest/localizaciones/provincias" required="true()" type="select1"/>
+      <bind nodeset="/FDI_4G/despliegue/g3/partido" constraint="url=/servicios/rest/localizaciones/partidos and depends=/FDI_4G/despliegue/g3/provincia" required="true()" type="select1"/>
+      <bind nodeset="/FDI_4G/despliegue/g3/partido_otro" relevant=" /FDI_4G/despliegue/g3/partido =9999" required="true()" type="string"/>
+      <bind nodeset="/FDI_4G/despliegue/g3/localidad" constraint="url=/servicios/rest/localizaciones/localidades and depends=/FDI_4G/despliegue/g3/partido" required="true()" type="select1"/>
+      <bind nodeset="/FDI_4G/despliegue/g3/localidad_otro" relevant=" /FDI_4G/despliegue/g3/localidad =9999" required="true()" type="string"/>
+	  <bind nodeset="/FDI_4G/despliegue/g3/latitud" constraint=".&gt;=-99.999999 and .&lt;=99.999999" jr:constraintMsg="Ingrese decimal entre -99.999999 y 99.999999" required="true()" type="decimal"/>
+	  <bind nodeset="/FDI_4G/despliegue/g3/longitud" constraint=".&gt;=-99.999999 and .&lt;=99.999999" jr:constraintMsg="Ingrese decimal entre -99.999999 y 99.999999" required="true()" type="decimal"/>
+	  <bind nodeset="/FDI_4G/despliegue/g3/altura" constraint=".&gt;=0 and .&lt;=999999.99" jr:constraintMsg="Ingrese decimal entre 0.00 y 999999.99" required="true()" type="decimal"/>
+	  
+	  <bind nodeset="/FDI_4G/despliegue/g4/tecnologia" constraint="url=/servicios/rest/listas/tecnologias_4g" required="true()" type="select1"/>
+      <bind nodeset="/FDI_4G/despliegue/g4/banda" constraint="url=/servicios/rest/listas/4G_BANDAS" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g4/tipo_acceso" constraint="url=/servicios/rest/listas/tipo_acc_4g" required="true()" type="select1"/>
+	  <bind nodeset="/FDI_4G/despliegue/g4/frecuencia" constraint=".&gt;=0 and .&lt;=99999.9999" jr:constraintMsg="Ingrese decimal entre 0.00 y 99999.9999" type="decimal"/>
+	  <bind nodeset="/FDI_4G/despliegue/g4/cap_trafico" constraint=".&gt;=0 and .&lt;=999999999999999.999" jr:constraintMsg="Ingrese decimal entre 0 y 999999999999999.999" required="true()" type="decimal"/>
+	  
+      <bind calculate="concat('uuid:', uuid())" nodeset="/FDI_4G/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input appearance="tooltip" ref="/FDI_4G/titulo">
+      <hint>Datos de despliegue</hint>
+    </input>
+    <group ref="/FDI_4G/despliegue">
+		<label></label>
+		<repeat appearance="grilla" nodeset="/FDI_4G/despliegue">
+			<group appearance="col4 well-white" ref="/FDI_4G/despliegue/g1">
+				<label> </label>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g1/etapa">
+				<label>Etapa</label>
+				<hint>Etapa de despliegue</hint>
+				<item>
+				  <label>Seleccione una opción</label>
+				  <value>-1</value>
+				</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g1/planificado">
+				<label>Planificado</label>
+				<hint>Identifica si el sitio fue presentado en la oferta de licitación</hint>
+				<item>
+				  <label>Seleccione una opción</label>
+				  <value>-1</value>
+				</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g1/estado">
+				<label>Estado</label>
+				<hint>Estado en que se encuentra el sitio</hint>
+				<item>
+				  <label>Seleccione una opción</label>
+				  <value>-1</value>
+				</item>
+				</select1>
+			</group>
+			
+			<group appearance="col4 well-white" ref="/FDI_4G/despliegue/g2">
+				<label> </label>
+				<input ref="/FDI_4G/despliegue/g2/codigo_nodo">
+					<label>Código nodo</label>
+					<hint>Código identificatorio del nodo</hint>
+				</input>
+
+				<input ref="/FDI_4G/despliegue/g2/id_celda">
+					<label>ID celda</label>
+					<hint>ID Celda (CGI-eNBId)</hint>
+				</input>		  
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g2/anfitrion_sitio">
+					<label>Anfitrión</label>
+					<hint>Anfitrión del sitio</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g2/colocalizacion">
+					<label>Colocalización</label>
+					<hint>Colocalización (sitio compartido con otro operador)</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g2/sitio_tipo">
+					<label>Tipo de sitio</label>
+					<hint>Tipo de sitio</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g2/sitio_critico">
+					<label>Sitio crítico</label>
+					<hint>Sitio crítico</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+			</group>
+			
+			<group appearance="col4 well-white" ref="/FDI_4G/despliegue/g3">
+				<label> </label>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g3/provincia">
+					<label>Provincia</label>
+					<hint>Provincia</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g3/partido">
+					<label>Partido / Departamento</label>
+					<hint>Partido/Departamento</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<input ref="/FDI_4G/despliegue/g3/partido_otro">
+					<label>Partido Otros</label>
+					<hint>Partido Otros</hint>
+				</input>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g3/localidad">
+					<label>Localidad</label>
+					<hint>Localidad</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<input ref="/FDI_4G/despliegue/g3/localidad_otro">
+					<label>Localidad Otros</label>
+					<hint>Localidad Otros</hint>
+				</input>
+				<input ref="/FDI_4G/despliegue/g3/latitud">
+					<label>Latitud</label>
+					<hint>Latitud</hint>
+				</input>
+				<input ref="/FDI_4G/despliegue/g3/longitud">
+					<label>Longitud</label>
+					<hint>Longitud</hint>
+				</input>
+				<input ref="/FDI_4G/despliegue/g3/altura">
+					<label>Altura</label>
+					<hint>Altura (en metros)</hint>
+				</input>
+			</group>
+			
+			<group appearance="col4 well-white" ref="/FDI_4G/despliegue/g4">
+				<label> </label>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g4/tecnologia">
+					<label>Tecnología</label>
+					<hint>Tecnología</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g4/banda">
+					<label>Banda</label>
+					<hint>Banda</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<select1 appearance="minimal" ref="/FDI_4G/despliegue/g4/tipo_acceso">
+					<label>Tipo de acceso</label>
+					<hint>Tipo de acceso</hint>
+					<item>
+						<label>Seleccione una opción</label>
+						<value>-1</value>
+					</item>
+				</select1>
+				<input ref="/FDI_4G/despliegue/g4/frecuencia">
+					<label>Frecuencia</label>
+					<hint>Frecuencia (MHz)</hint>
+				</input>
+				<input ref="/FDI_4G/despliegue/g4/cap_trafico">
+					<label>Capacidad de tráfico</label>
+					<hint>Capacidad de tráfico configurada, en MB (megabytes)</hint>
+				</input>
+			</group>
+			
+		</repeat>
+    </group>
+  </h:body>
+</h:html>
