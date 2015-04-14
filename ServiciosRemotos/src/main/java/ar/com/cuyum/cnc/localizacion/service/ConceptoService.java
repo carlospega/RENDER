@@ -74,4 +74,56 @@ public class ConceptoService {
 		return (Long)em.createQuery(query.toString())
 				.getSingleResult();
 	}
+
+	public List<Concepto> buscarConceptos(String tipo, String fkey) {
+		
+		StringBuilder query = new StringBuilder();
+		query.append("select n from Concepto n ");
+		if(tipo!=null){
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"' and n.idpadre='" + fkey + "' ");
+		}
+		query.append("order by n.valor");
+		
+		List<Concepto> lstConceptos = em
+				.createQuery(query.toString())
+				.getResultList();
+		
+		for(Concepto concepto: lstConceptos){
+			System.out.println(concepto.getId());
+			System.out.println(concepto.getIdpadre());	
+		}
+
+		return lstConceptos;
+	}
+
+	public List<Concepto> buscarConceptos(String tipo, Integer limit,
+			Integer page, String fkey) {
+		if(page<=0 || limit<1) return null;
+		int first = (page-1)*limit;
+		
+		StringBuilder query = new StringBuilder();
+		query.append("select n from Concepto n ");
+		if(tipo!=null){
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"' and n.idpadre='" + fkey + "' ");
+		}
+		query.append("order by n.valor");
+		
+		List<Concepto> lstConceptos = em.createQuery(query.toString())
+				.setMaxResults(limit)
+				.setFirstResult(first)
+				.getResultList();
+		
+		return lstConceptos;
+	}
+
+	public long contarConceptos(String tipo, String fkey) {
+		StringBuilder query = new StringBuilder();
+		query.append("select count(*) from Concepto n ");
+		if(tipo!=null){
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"' and n.idpadre='" + fkey + "' ");
+		}
+		
+		return (Long)em.createQuery(query.toString())
+				.getSingleResult();
+	}
 }

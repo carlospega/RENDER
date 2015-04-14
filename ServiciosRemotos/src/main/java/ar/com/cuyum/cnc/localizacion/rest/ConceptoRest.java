@@ -45,29 +45,62 @@ public class ConceptoRest {
 	@POST
 	@Path("/{type}")
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	public RestResponse listas(@PathParam ("type") String tipo, @QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
+	public RestResponse listas(@PathParam ("type") String tipo, @QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page, @FormParam("fkey") String fkey) {		
 		RestResponse response = new RestResponse();
 		List<Concepto> lstConceptos;
 		List<ListObject> results = new ArrayList<ListObject>();
+		
 		try {
-			if(limit==null){
-				
-				lstConceptos = conceptoService.buscarConceptos(tipo);		
+			if(fkey==null || fkey.isEmpty()){
+				try {
+					if(limit==null){
+						
+						lstConceptos = conceptoService.buscarConceptos(tipo);		
+					}else{
+						page=page==null?1:page;
+						lstConceptos = conceptoService.buscarConceptos(tipo,limit,page);	
+						response.setTotal(conceptoService.contarConceptos(tipo));
+					}
+					if(lstConceptos!=null && lstConceptos.size()>0){
+						for (Concepto concepto : lstConceptos) {
+							results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
+						}
+					}
+					response.setSuccess(true);
+				} catch (Exception e) {
+					response.setSuccess(false);
+					log.error(e.getMessage());
+				}	
 			}else{
-				page=page==null?1:page;
-				lstConceptos = conceptoService.buscarConceptos(tipo,limit,page);	
-				response.setTotal(conceptoService.contarConceptos(tipo));
+				try {
+					if(limit==null){
+						
+						lstConceptos = conceptoService.buscarConceptos(tipo, fkey);		
+					}else{
+						page=page==null?1:page;
+						lstConceptos = conceptoService.buscarConceptos(tipo,limit,page, fkey);	
+						response.setTotal(conceptoService.contarConceptos(tipo, fkey));
+					}
+					if(lstConceptos!=null && lstConceptos.size()>0){
+						for (Concepto concepto : lstConceptos) {
+							results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
+						}
+					}
+					response.setSuccess(true);
+				} catch (Exception e) {
+					response.setSuccess(false);
+					log.error(e.getMessage());
+				}	
+				
 			}
-			if(lstConceptos!=null && lstConceptos.size()>0){
-				for (Concepto concepto : lstConceptos) {
-					results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
-				}
-			}
-			response.setSuccess(true);
+			
+			
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
-		}		
+		}
+		
+			
 		response.setResult(results);
 		return response;
 	}	
