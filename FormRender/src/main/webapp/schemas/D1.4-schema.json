@@ -1,1 +1,249 @@
-{"$schema":"http://json-schema.org/draft-04/schema","type":"object","action":"/api/deposition","method":"form-data-post","required":["formulario"],"properties":{"formulario":{"type":"object","required":["id","formularios"],"properties":{"id":{"enum":["D1.4"]},"formularios":{"type":"array","minItems":1,"items":{"type":"object","required":["data"],"properties":{"data":{"type":"array","minItems":1,"items":{"type":"object","required":["provincia","partido","localidad","disponibles","operativos","prepago","pospago","mixto","suscripInternet","altas","bajas"],"claves_primarias":[],"grid":{"sumarizada":false,"calculados":false,"ingresados":false},"properties":{"item":{"$ref":"formulario.json#/definitions/item"},"instance":{"$ref":"formulario.json#/definitions/integer"},"provincia":{"$ref":"formulario.json#/definitions/combo","url":"/servicios/rest/localizaciones/provincias","title":"Provincia","hint":"Provincia","values":[{"label":"Seleccione una opción","value":"-1"}]},"partido":{"$ref":"formulario.json#/definitions/combo","url":"/servicios/rest/localizaciones/partidos","depends":"provincia","title":"Partido / Departamento","hint":"Partido/Departamento","values":[{"label":"Seleccione una opción","value":"-1"}]},"partido_otro":{"$ref":"formulario.json#/definitions/string","relevant":["partido =9999"],"title":"Partido Otros","hint":"Partido Otros"},"localidad":{"$ref":"formulario.json#/definitions/combo","url":"/servicios/rest/localizaciones/localidades","depends":"partido","title":"Localidad","hint":"Localidad","values":[{"label":"Seleccione una opción","value":"-1"}]},"localidad_otro":{"$ref":"formulario.json#/definitions/string","relevant":["localidad =9999"],"title":"Localidad Otros","hint":"Localidad Otros"},"disponibles":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Disponibles","hint":"Disponibles"},"operativos":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Operativos","hint":"Operativos"},"prepago":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Prepago","hint":"Prepago"},"pospago":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Pospago","hint":"Pospago"},"mixto":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Mixto","hint":"Mixto"},"suscripInternet":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Suscripciones a Internet","hint":"Sucripciones a Internet"},"altas":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Altas","hint":"Informar total de altas producidas en el período."},"bajas":{"$ref":"formulario.json#/definitions/integer","minimum":0,"maximum":99999999,"title":"Bajas","hint":"Informar total de bajas producidas en el período."},"firma_digital":{"$ref":"formulario.json#/definitions/string"}},"otherFields":{"titulo":{"$ref":"formulario.json#/definitions/string","hint":"Se define como la infraestructura que permite la conexión directa del usuario a la red del prestador."}},"additionalProperties":false},"uniqueItems":true}}}}}}}}
+{  
+   "$schema":"http://json-schema.org/draft-04/schema",
+   "type":"object",
+   "action":"/api/deposition",
+   "method":"form-data-post",
+   "required":[  
+      "formulario"
+   ],
+   "properties":{  
+      "formulario":{  
+         "type":"object",
+         "required":[  
+            "id",
+            "formularios"
+         ],
+         "properties":{  
+            "id":{  
+               "enum":[  
+                  "D1.4"
+               ]
+            },
+            "formularios":{  
+               "type":"array",
+               "minItems":1,
+               "items":{  
+                  "type":"object",
+                  "required":[  
+                     "data"
+                  ],
+                  "properties":{  
+                     "data":{  
+                        "type":"array",
+                        "minItems":1,
+                        "items":{  
+                           "type":"object",
+                           "required":[  
+                              "provincia",
+                              "partido",
+                              "localidad",
+                              "disponibles",
+                              "prepago",
+                              "pospago",
+                              "mixto",
+                              "operativos",
+                              "suscripInternet",
+                              "suscripInternet4G",
+                              "suscripInternetDispositivosAcceso",
+                              "totalSuscripInternet",
+                              "terminales2G3GActivas",
+                              "terminales4GActivas",
+                              "terminales2G3GVendidas",
+                              "terminales4GVendidas",
+                              "altas",
+                              "bajas"
+                           ],
+			   "claves_primarias":[
+                           ],
+                           "grid":{  
+                              "sumarizada":false,
+                              "calculados":false,
+                              "ingresados":false
+                           },
+                           "properties":{  
+                              "item":{  
+                                 "$ref":"formulario.json#/definitions/item"
+                              },
+                              "instance":{  
+                                 "$ref":"formulario.json#/definitions/integer"
+                              },
+                              "provincia":{  
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/provincias",
+                                 "title":"Provincia",
+                                 "hint":"Provincia",
+                                 "values":[  
+                                    {  
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "partido":{  
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/partidos",
+                                 "depends":"provincia",
+                                 "title":"Partido / Departamento",
+                                 "hint":"Partido/Departamento",
+                                 "values":[  
+                                    {  
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "partido_otro":{  
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "relevant":[  
+                                    "partido =9999"
+                                 ],
+                                 "title":"Partido Otros",
+                                 "hint":"Partido Otros"
+                              },
+                              "localidad":{  
+                                 "$ref":"formulario.json#/definitions/combo",
+                                 "url":"/servicios/rest/localizaciones/localidades",
+                                 "depends":"partido",
+                                 "title":"Localidad",
+                                 "hint":"Localidad",
+                                 "values":[  
+                                    {  
+                                       "label":"Seleccione una opción",
+                                       "value":"-1"
+                                    }
+                                 ]
+                              },
+                              "localidad_otro":{  
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "relevant":[  
+                                    "localidad =9999"
+                                 ],
+                                 "title":"Localidad Otros",
+                                 "hint":"Localidad Otros"
+                              },
+                              "disponibles":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":99999999,
+                                 "title":"Accesos Disponibles",
+                                 "hint":"Cantidad de accesos totales que pueden acceder al recurso disponible para la prestación del servicio."
+                              },
+                              "prepago":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Accesos Prepagos",
+                                 "hint":"Líneas contratadas sin abono regular o periódico, y que utilizan exclusivamente recargas de prepago (por cualquier medio) que pueden incluir minutos de voz y/o tráfico de datos y/o crédito en dinero."
+                              },
+                              "pospago":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Accesos Pospagos",
+                                 "hint":"Líneas contratadas con abono regular o periódico, y por el cual se factura  el consumo realizado al final del período medido."
+                              },
+                              "mixto":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Accesos Mixtos",
+                                 "hint":"Líneas contratadas con un abono regular que típicamente especifica un límite o cantidad máxima de minutos voz, Acceso a Internet, mensajes de texto, etc., agotado el cual, la línea pasa a modalidad prepaga."
+                              },
+                              "operativos":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Total Accesos Móviles",
+                                 "hint":"Total de líneas móviles operativas que incluye prepagas, pospagas y mixtas."
+                              },
+                              "suscripInternet":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Suscripciones a Internet",
+                                 "hint":"Todos los abonados móviles que incluyen el pago periódico o no, específico para acceder a Internet 3G o superior (excluyendo GPRS y EDGE). En accesos prepagos, si no hubiera pago durante el mes informado para el acceso a Internet 3G (recargas por cualquier medio), se computarán aquellos abonados que han accedido a Internet en los últimos 3 meses."
+                              },
+                              "suscripInternet4G":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Suscripciones a Internet 4G",
+                                 "hint":"Conforme condiciones de contratación, si fueran específicas."
+                              },
+                              "suscripInternetDispositivosAcceso":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Internet Dispositivos de Acceso (BAM/USB)",
+                                 "hint":"Módems 3G (USB exclusivamente)"
+                              },
+                              "totalSuscripInternet":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Total Suscripciones a Internet",
+                                 "hint":"Total de líneas móviles con acceso a Internet."
+                              },
+                              "terminales2G3GActivas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Terminales 2G/3G Activas",
+                                 "hint":"El total de Terminales 2G/3G/4G no podrá ser jamás superior al total de accesos móviles."
+                              },
+                              "terminales4GActivas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Terminales 4G Activas",
+                                 "hint":"El total de Terminales 2G/3G/4G no podrá ser jamás superior al total de accesos móviles."
+                              },
+                              "terminales2G3GVendidas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Terminales 2G/3G Vendidas",
+                                 "hint":"Total acumulado de terminales, equipos o dispositivos de acceso móviles vendidos o comercializados durante el mes, con tecnología hasta 3G o inferior."
+                              },
+                              "terminales4GVendidas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Terminales 4G Vendidas",
+                                 "hint":"Total acumulado de terminales, equipos o dispositivos de acceso móviles vendidos o comercializados durante el mes, con tecnología 4G o superior."
+                              },
+                              "altas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Altas",
+                                 "hint":"Total de Altas de líneas/accesos producidas en el mes."
+                              },
+                              "bajas":{  
+                                 "$ref":"formulario.json#/definitions/integer",
+                                 "minimum":0,
+                                 "maximum":999999999,
+                                 "title":"Bajas",
+                                 "hint":"Total de Bajas de líneas/accesos producidas en el mes."
+                              },
+                              "firma_digital":{  
+                                 "$ref":"formulario.json#/definitions/string"
+                              }
+                           },
+                           "otherFields":{  
+                              "titulo":{  
+                                 "$ref":"formulario.json#/definitions/string",
+                                 "hint":"Se define como la infraestructura que permite la conexión directa del usuario a la red del prestador."
+                              }
+                           },
+                           "additionalProperties":false
+                        },
+                        "uniqueItems":true
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

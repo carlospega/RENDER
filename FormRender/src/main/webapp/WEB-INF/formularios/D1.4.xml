@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <h:head>
-    <h:title>Formulario D1.4 - Accesos</h:title>
+    <h:title>Formulario D1.4 - Accesos / Líneas Móviles</h:title>
     <model>
       <submission action="/api/deposition" method="form-data-post"/>
       <instance>
@@ -15,12 +15,19 @@
               <localidad/>
               <localidad_otro/>
               <disponibles/>
-              <operativos/>
               <prepago/>
               <pospago/>
               <mixto/>
+			  <operativos/>
               <suscripInternet/>
-              <altas/>
+			  <suscripInternet4G/>
+              <suscripInternetDispositivosAcceso/>
+              <totalSuscripInternet/>
+			  <terminales2G3GActivas/>
+			  <terminales4GActivas/>
+			  <terminales2G3GVendidas/>
+			  <terminales4GVendidas/>
+			  <altas/>
               <bajas/>
             </mes>
           </meses>
@@ -36,13 +43,20 @@
       <bind constraint="url=/servicios/rest/localizaciones/localidades and depends=/D1.4/meses/mes/partido" nodeset="/D1.4/meses/mes/localidad" required="true()" type="select1"/>
       <bind nodeset="/D1.4/meses/mes/localidad_otro" relevant=" /D1.4/meses/mes/localidad =9999" required="true()" type="string"/>
       <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/disponibles" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/operativos" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/prepago" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/pospago" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/mixto" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/suscripInternet" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/altas" required="true()" type="int"/>
-      <bind constraint=".&gt;=0 and .&lt;=99999999" jr:constraintMsg="Ingrese entero entre 0 y 99999999" nodeset="/D1.4/meses/mes/bajas" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/prepago" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/pospago" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/mixto" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/operativos" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/suscripInternet" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/suscripInternet4G" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/suscripInternetDispositivosAcceso" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/totalSuscripInternet" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/terminales2G3GActivas" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/terminales4GActivas" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/terminales2G3GVendidas" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/terminales4GVendidas" required="true()" type="int"/>
+	  <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/altas" required="true()" type="int"/>
+      <bind constraint=".&gt;=0 and .&lt;=999999999" jr:constraintMsg="Ingrese entero entre 0 y 999999999" nodeset="/D1.4/meses/mes/bajas" required="true()" type="int"/>
       <bind calculate="concat('uuid:', uuid())" nodeset="/D1.4/meta/instanceID" readonly="true()" type="string"/>
     </model>
   </h:head>
@@ -88,36 +102,64 @@
             <hint>Localidad Otros</hint>
           </input>
           <input ref="/D1.4/meses/mes/disponibles">
-            <label>Disponibles</label>
-            <hint>Disponibles</hint>
-          </input>
-          <input ref="/D1.4/meses/mes/operativos">
-            <label>Operativos</label>
-            <hint>Operativos</hint>
+            <label>Accesos Disponibles</label>
+            <hint>Cantidad de accesos totales que pueden acceder al recurso disponible para la prestación del servicio.</hint>
           </input>
           <input ref="/D1.4/meses/mes/prepago">
-            <label>Prepago</label>
-            <hint>Prepago</hint>
+            <label>Accesos Prepagos</label>
+            <hint>Líneas contratadas sin abono regular o periódico, y que utilizan exclusivamente recargas de prepago (por cualquier medio) que pueden incluir minutos de voz y/o tráfico de datos y/o crédito en dinero.</hint>
           </input>
           <input ref="/D1.4/meses/mes/pospago">
-            <label>Pospago</label>
-            <hint>Pospago</hint>
+            <label>Accesos Pospagos</label>
+            <hint>Líneas contratadas con abono regular o periódico, y por el cual se factura  el consumo realizado al final del período medido.</hint>
           </input>
           <input ref="/D1.4/meses/mes/mixto">
-            <label>Mixto</label>
-            <hint>Mixto</hint>
+            <label>Accesos Mixtos</label>
+            <hint>Líneas contratadas con un abono regular que típicamente especifica un límite o cantidad máxima de minutos voz, Acceso a Internet, mensajes de texto, etc., agotado el cual, la línea pasa a modalidad prepaga.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/operativos">
+            <label>Total Accesos Móviles</label>
+            <hint>Total de líneas móviles operativas que incluye prepagas, pospagas y mixtas.</hint>
           </input>
           <input ref="/D1.4/meses/mes/suscripInternet">
             <label>Suscripciones a Internet</label>
-            <hint>Sucripciones a Internet</hint>
+            <hint>Todos los abonados móviles que incluyen el pago periódico o no, específico para acceder a Internet 3G o superior (excluyendo GPRS y EDGE). En accesos prepagos, si no hubiera pago durante el mes informado para el acceso a Internet 3G (recargas por cualquier medio), se computarán aquellos abonados que han accedido a Internet en los últimos 3 meses.</hint>
           </input>
-          <input ref="/D1.4/meses/mes/altas">
+		  <input ref="/D1.4/meses/mes/suscripInternet4G">
+            <label>Suscripciones a Internet 4G</label>
+            <hint>Conforme condiciones de contratación, si fueran específicas.</hint>
+          </input>
+          <input ref="/D1.4/meses/mes/suscripInternetDispositivosAcceso">
+            <label>Internet Dispositivos de Acceso (BAM/USB)</label>
+            <hint>Módems 3G (USB exclusivamente)</hint>
+          </input>
+          <input ref="/D1.4/meses/mes/totalSuscripInternet">
+            <label>Total Suscripciones a Internet</label>
+            <hint>Total de líneas móviles con acceso a Internet.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/terminales2G3GActivas">
+            <label>Terminales 2G/3G Activas</label>
+            <hint>El total de Terminales 2G/3G/4G no podrá ser jamás superior al total de accesos móviles.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/terminales4GActivas">
+            <label>Terminales 4G Activas</label>
+            <hint>El total de Terminales 2G/3G/4G no podrá ser jamás superior al total de accesos móviles.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/terminales2G3GVendidas">
+            <label>Terminales 2G/3G Vendidas</label>
+            <hint>Total acumulado de terminales, equipos o dispositivos de acceso móviles vendidos o comercializados durante el mes, con tecnología hasta 3G o inferior.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/terminales4GVendidas">
+            <label>Terminales 4G Vendidas</label>
+            <hint>Total acumulado de terminales, equipos o dispositivos de acceso móviles vendidos o comercializados durante el mes, con tecnología 4G o superior.</hint>
+          </input>
+		  <input ref="/D1.4/meses/mes/altas">
             <label>Altas</label>
-            <hint>Informar total de altas producidas en el período.</hint>
+            <hint>Total de Altas de líneas/accesos producidas en el mes.</hint>
           </input>
           <input ref="/D1.4/meses/mes/bajas">
             <label>Bajas</label>
-            <hint>Informar total de bajas producidas en el período.</hint>
+            <hint>Total de Bajas de líneas/accesos producidas en el mes.</hint>
           </input>
         </group>
       </repeat>
