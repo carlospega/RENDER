@@ -51,42 +51,50 @@ public class ConceptoRest {
 		List<ListObject> results = new ArrayList<ListObject>();
 		
 		try {
-			if(fkey==null || fkey.isEmpty()){
-				try {
-					if(limit==null){
-						
-						lstConceptos = conceptoService.buscarConceptos(tipo);		
-					}else{
-						page=page==null?1:page;
-						lstConceptos = conceptoService.buscarConceptos(tipo,limit,page);	
-						response.setTotal(conceptoService.contarConceptos(tipo));
-					}
-					if(lstConceptos!=null && lstConceptos.size()>0){
-						for (Concepto concepto : lstConceptos) {
-							results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
-						}
-					}
+			System.out.println("El Key para concepto es:" + fkey);
+			if(fkey==null || fkey.isEmpty()){		
+					response.setTotal(0l);
+					response.setResult(results);
 					response.setSuccess(true);
-				} catch (Exception e) {
-					response.setSuccess(false);
-					log.error(e.getMessage());
-				}	
+					response.setMsg("Estructura invalida, se espera fkey");
 			}else{
 				try {
-					if(limit==null){
+					if (fkey.equals("-1")){
+						try {
+							if(limit==null){
 						
-						lstConceptos = conceptoService.buscarConceptos(tipo, fkey);		
+								lstConceptos = conceptoService.buscarConceptos(tipo);		
+							}else{
+								page=page==null?1:page;
+								lstConceptos = conceptoService.buscarConceptos(tipo,limit,page);	
+								response.setTotal(conceptoService.contarConceptos(tipo));
+							}
+							if(lstConceptos!=null && lstConceptos.size()>0){
+								for (Concepto concepto : lstConceptos) {
+									results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
+								}
+							}
+						response.setSuccess(true);
+						} catch (Exception e) {
+							response.setSuccess(false);
+							log.error(e.getMessage());
+						}	
 					}else{
-						page=page==null?1:page;
-						lstConceptos = conceptoService.buscarConceptos(tipo,limit,page, fkey);	
-						response.setTotal(conceptoService.contarConceptos(tipo, fkey));
-					}
-					if(lstConceptos!=null && lstConceptos.size()>0){
-						for (Concepto concepto : lstConceptos) {
-							results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
+						if(limit==null){
+							
+							lstConceptos = conceptoService.buscarConceptos(tipo, fkey);		
+						}else{
+							page=page==null?1:page;
+							lstConceptos = conceptoService.buscarConceptos(tipo,limit,page, fkey);	
+							response.setTotal(conceptoService.contarConceptos(tipo, fkey));
 						}
+						if(lstConceptos!=null && lstConceptos.size()>0){
+							for (Concepto concepto : lstConceptos) {
+								results.add(new ListObject(concepto.getNombre(),concepto.getValor(), concepto.getIdpadre()));
+							}
+						}
+						response.setSuccess(true);
 					}
-					response.setSuccess(true);
 				} catch (Exception e) {
 					response.setSuccess(false);
 					log.error(e.getMessage());

@@ -341,6 +341,10 @@ public class RelayService {
 
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			params.add(new BasicNameValuePair("tipo", tipo));
+			System.out.println("El key en biuldRequest es: " + fkey);
+			if (fkey == null){
+				fkey ="-1";
+			}
 			params.add(new BasicNameValuePair("fkey", fkey));
 
 			method.setEntity(new UrlEncodedFormEntity(params));
